@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import { Text, View , Button} from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack';
+import AntDesign from "react-native-vector-icons/AntDesign" 
 
 const Stack = createStackNavigator()
 function Home (){
     return(
-        <Text>Home</Text>
+        <View>
+            <AntDesign name="forward" size={50} color="skyblue"/>
+            <Text>Damn it</Text>
+        </View>
     ) 
 }
 
