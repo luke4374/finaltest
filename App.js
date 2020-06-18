@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
-import { Text, View , Modal , Button, StyleSheet} from 'react-native'
-import { Home, Buy, FAQ } from './func'
+import { Text, View , Modal , Button, StyleSheet, Image, ScrollView} from 'react-native'
+import { Home } from './func'
+import { Music, FAQ } from './music'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { FlatList, TouchableOpacity, TouchableHighlight  } from 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 import ViewPager from '@react-native-community/viewpager';
 import Feather from "react-native-vector-icons/Feather" 
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 
 const Drawer = createDrawerNavigator()
 const Tab = createBottomTabNavigator()
-const Stack = createStackNavigator()
 
 export default class App extends Component {
   constructor(props){
     super(props)
-    this.state={visible:false}
+    this.state={visible:true}
   }
   _hide=()=>{
     this.setState({visible:false})  
@@ -28,19 +29,20 @@ export default class App extends Component {
         <NavigationContainer>
             <Modal visible={this.state.visible}>
               <ViewPager style={{flex:1}} initialPage={0}>
-                <View key="1">
-                    <Text>First page aaa</Text>
+                <View key="1" style={{backgroundColor:'red',justifyContent:'center',alignItems:'center'}}>
+                  <Text style={{fontSize:40, color:'white', fontStyle:'italic',fontFamily:'Courier'}}>音樂的力量</Text>
                 </View>
-                <View key="2">
-                    <Text>Second page aaa</Text>
-                    <Button title="close" onPress={this._hide}/>
+                <View key="2" style={{backgroundColor:'red',justifyContent:'center',alignItems:'center'}}>
+                <Text style={{fontSize:50, color:'white'}}>   就这？</Text>
+                <Button title="进入" onPress={this._hide} style={style.button}/>
                 </View>
               </ViewPager>
+
             </Modal>
 
             <Drawer.Navigator>
-              <Drawer.Screen name="Main" component={Main}/>
-              <Drawer.Screen name="Settings" component={Settings}/>
+              <Drawer.Screen name="主页" component={Main}/>
+              <Drawer.Screen name="制作人员" component={Settings}/>
             </Drawer.Navigator>
         </NavigationContainer>
     )
@@ -54,17 +56,15 @@ class Main extends React.Component{
         screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-
           if (route.name === 'Home') {
             iconName = focused
               ? 'home'
               : 'home';
-          } else if (route.name === 'Buy') {
+          } else if (route.name === 'Music') {
             iconName = focused ? 'music' : 'music';
           }else if (route.name === 'FAQ') {
             iconName = focused ? 'info' : 'info';
           }
-
           // You can return any component that you like here!
           return <Feather name={iconName} size={size} color={color} />;
         },
@@ -75,7 +75,7 @@ class Main extends React.Component{
       }}
       >
         <Tab.Screen name="Home" component={Home}/>
-        <Tab.Screen name="Buy" component={Buy}/>
+        <Tab.Screen name="Music" component={Music}/>
         <Tab.Screen name="FAQ" component={FAQ}/>
       </Tab.Navigator>
     )
@@ -84,10 +84,36 @@ class Main extends React.Component{
 
 class Settings extends React.Component{
   render(){
-    return <Text>Settings</Text>
+    return (
+      <ScrollView>
+        <Image 
+          source={{uri: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3516689169,1068601019&fm=26&gp=0.jpg'}}
+          style={{width:400, height:420}}
+        />
+        <Text style={{ color:'green',fontSize:30, textAlign: 'center' }}>制作成员(第五组)</Text>
+        <Text style={{ color:'grey',fontSize:40, textAlign: 'center' }}>骆铭，施孟宇，苏杨，史鑫祺</Text>
+      </ScrollView>
+    )
   }
 }
 
 const style = StyleSheet.create({
-
+  container:{
+    marginTop:300,
+    borderWidth:1,
+    borderRadius:6,
+    flexDirection:"row-reverse",
+    justifyContent:"flex-end",
+    margin:4
+},
+  button: {
+    padding:10,
+    borderRadius:6,
+    marginTop:20,
+    marginLeft:10,
+    margin:6,
+    alignContent:"flex-end",
+    backgroundColor: 'black',
+    
+  }
 })

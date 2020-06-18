@@ -1,0 +1,29 @@
+{
+    "list": [
+        {
+          "title": "I'll Be Gone (Original Mix)",
+          "cover": "http://123.57.91.61/alum%20cover/I'll%20be%20gone.jpg",
+          "url": "http://123.57.91.61/music/Avicii,Joakim%20Berg%20-%20I'll%20Be%20Gone%20(Original%20Mix).mp3"
+        },
+        {
+            "title": "Creep",
+            "cover": "http://123.57.91.61/alum%20cover/timg%20(1).jpg",
+            "url": "http://123.57.91.61/music/Bergs,Avicii,Jasmine%20Thompson%20-%20The%20Days%20(Jasmine%20Thompson%20Cover)%20(Bergs%20Remix).mp3"
+        },
+        {
+          "title": "Always On The Run",
+          "cover": "http://123.57.91.61/alum%20cover/Tim.jpg",
+          "url": "http://123.57.91.61/music/Avicii,Noonie%20Bao%20-%20Always%20On%20The%20Run.mp3"
+        },
+        {
+            "title": "Heaven",
+            "cover": "http://123.57.91.61/alum%20cover/Heaven.jpg",
+            "url": "http://123.57.91.61/music/Avicii,Simon%20Aldred%20-%20Heaven.mp3"
+        },
+        {
+            "title": "Get Lucky",
+            "cover": "http://123.57.91.61/alum%20cover/Get%20Lucky.png",
+            "url": "http://123.57.91.61/music/Daft%20Punk%20-%20Get%20Lucky.mp3"
+        }   
+    ]
+}
