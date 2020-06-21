@@ -11,6 +11,7 @@ class Music extends React.Component {
         return(
         <Stack.Navigator>
             <Stack.Screen name="热曲榜单TOP10" component={ItemList}/>
+            <Stack.Screen name="专辑详情" component={ItemDetail}/>
         </Stack.Navigator>
      )  
     }
@@ -83,8 +84,8 @@ class ItemList extends React.Component {
         return <View style={{height:1,backgroundColor:"gray"}}></View>
       }
 
-    _showDetail =()=>{
-        this.props.navigation.navigate("歌曲详情")
+    _goDetails =()=>{
+      this.props.navigation.navigate("专辑详情")
     }
     render(){
         return(
@@ -99,10 +100,55 @@ class ItemList extends React.Component {
         )
     }
 }
-function ItemDetail(){
-    return(
-        <Text>ItemDetail</Text>
-    ) 
+class ItemDetail extends React.Component{
+  constructor(props){
+    super(props)
+    this.max=4
+    this.state={data:[],albums:[]}
+}
+  componentDidMount(){
+    fetch("http://123.57.91.61:8085/album/Allmusic",{method:"GET"})
+    .then(resp=>resp.json())
+    .then(albums=>{
+        this.setState({albums:albums})
+    })
+  }
+
+
+    render(){
+      return(
+      <View>
+        <Image style={{            
+            width: 200,
+            height: 200,
+            borderRadius: 85,
+            alignSelf: 'center',
+            position: 'absolute', 
+            top: 150,}} 
+            source={{uri:'http://123.57.91.61/alum%20cover/whoa.jpg'}} />
+        <Text  style={{    
+            fontSize:30,       
+            alignSelf: 'center',
+            position: 'absolute', 
+            top: 70,
+            color:'#8470FF'
+          }} 
+            >Whoa</Text>
+        <Text  style={{    
+            fontSize:30,       
+            alignSelf: 'center',
+            position: 'absolute', 
+            top: 100,
+            color:'#ADD8E6'
+          }} 
+            >xxxtantencion</Text>
+
+      </View>
+      )
+
+    }
+
+    
 }
 
 const styles = StyleSheet.create({
@@ -138,6 +184,17 @@ const styles = StyleSheet.create({
         height:20,
         flexDirection:'row-reverse'
       },
+      Detail:{
+        justifyContent:'center',
+        width: 270,
+        height: 270,
+        marginTop: 155,
+        borderColor: 'gray',
+        borderWidth: 10,
+        borderRadius: 190,
+        alignSelf: 'center',
+        opacity: 0.2
+      }
 })
 
 export { Music, FAQ}

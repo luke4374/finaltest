@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View , Modal , Button, StyleSheet, Image, ScrollView} from 'react-native'
+import { Text, View , Modal , Button, StyleSheet, Image, ScrollView, ViewPagerAndroid} from 'react-native'
 import { Home } from './func'
 import { Music, FAQ } from './music'
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -14,23 +14,29 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const Drawer = createDrawerNavigator()
 const Tab = createBottomTabNavigator()
-
+const songs =require('./musicList.json')
 export default class App extends Component {
   constructor(props){
     super(props)
-    this.state={visible:true}
+    this.state={
+      visible:true,
+      currentTime: 0.00,
+      currentIndex: 0
+    }
   }
   _hide=()=>{
     this.setState({visible:false})  
   }
-
   render() {
     return (
         <NavigationContainer>
             <Modal visible={this.state.visible}>
               <ViewPager style={{flex:1}} initialPage={0}>
-                <View key="1" style={{backgroundColor:'red',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontSize:40, color:'white', fontStyle:'italic',fontFamily:'Courier'}}>音樂的力量</Text>
+                <View key="1">
+                <Image
+            source={{uri: 'http://123.57.91.61/alum%20cover/timg%20(4).jpg'}}
+            style={{flex:1}}
+          />
                 </View>
                 <View key="2" style={{backgroundColor:'red',justifyContent:'center',alignItems:'center'}}>
                 <Text style={{fontSize:50, color:'white'}}>   就这？</Text>

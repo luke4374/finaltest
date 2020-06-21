@@ -185,7 +185,8 @@ class Home extends React.Component{
             height: 170,
             borderRadius: 85,
             alignSelf: 'center',
-            position: 'absolute', top: 205,
+            position: 'absolute', 
+            top: 205,
             transform: [{rotate: this.state.spinValue.interpolate({
               inputRange: [0, 1],
               outputRange: ['0deg', '360deg']
